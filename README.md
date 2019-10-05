@@ -64,7 +64,7 @@ Entidad que referencia cada uno de los nodos del arbol. Tiene un valor y ramas i
 ## Ejecución de las pruebas
 
 1. Realice el llamado al método que permite agregar un nodo tantas veces como valores se quieran ingresar al arbol
-
+```
 https://webapitree.azurewebsites.net/tree/67
 https://webapitree.azurewebsites.net/tree/39
 https://webapitree.azurewebsites.net/tree/76
@@ -75,22 +75,25 @@ https://webapitree.azurewebsites.net/tree/74
 https://webapitree.azurewebsites.net/tree/85
 https://webapitree.azurewebsites.net/tree/83
 https://webapitree.azurewebsites.net/tree/87
-
+```
 
 2. Realice el llamado al método que permite consultar el ancestro común mas cercano entre dos nodos
 
+```
 https://webapitree.azurewebsites.net/tree/29/44
 
 Retorna 39
-
+```
+```
 https://webapitree.azurewebsites.net/tree/44/85
 
 Retorna 67
-
+```
+```
 https://webapitree.azurewebsites.net/tree/83/87
 
 Retorna 85
-
+```
 
 ## Constuido con
 
