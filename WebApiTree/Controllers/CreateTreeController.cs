@@ -14,8 +14,28 @@ namespace ApiTree.Controllers
     public class CreateTreeController : ApiController
     {
 
+        /// <summary>
+        /// Clean all the nodes to start again
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("")]
+        public bool CleanNodes()
+        {
 
-       
+            MemoryCache mc = MemoryCache.Default;
+            if (mc.Contains("tree"))
+            {
+                mc.Remove("tree");
+            }
+            return true;
+
+        }
+        /// <summary>
+        /// Add a new node to the tree
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>True if OK</returns>
         [HttpGet]
         [Route("{value:int}")]
         public string AddNode(int value)
@@ -26,13 +46,26 @@ namespace ApiTree.Controllers
             return GetTree();
 
         }
-
+        /// <summary>
+        /// Show the lowest common ancestro between two nodes
+        /// </summary>
+        /// <param name="value1">First node</param>
+        /// <param name="value2">Second node</param>
+        /// <returns>Lowest common ancestor node</returns>
         [HttpGet]
         [Route("{value1:int}/{value2:int}")]
         public int LowestCommonAncestor(int value1, int value2)
         {
+            try
+            {
+                return LCA(value1, value2);
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
             
-            return LCA(value1, value2);
         }
 
         private void SetNode(int value)
@@ -63,6 +96,8 @@ namespace ApiTree.Controllers
         private int LCA(int value1, int value2)
         {
             string cacheTree;
+            
+
             cacheTree = GetTree();
 
             string[] nodes;
