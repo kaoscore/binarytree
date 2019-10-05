@@ -15,7 +15,7 @@ namespace ApiTree.Controllers
     {
 
         /// <summary>
-        /// Clean all the nodes to start again
+        /// Limpia el arbol para iniciar de nuevo
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -32,10 +32,10 @@ namespace ApiTree.Controllers
 
         }
         /// <summary>
-        /// Add a new node to the tree
+        /// Agrega un nuevo nodo al arbol
         /// </summary>
         /// <param name="value"></param>
-        /// <returns>True if OK</returns>
+        /// <returns>Retorna cada nodo concatenado con comas</returns>
         [HttpGet]
         [Route("{value:int}")]
         public string AddNode(int value)
@@ -47,11 +47,11 @@ namespace ApiTree.Controllers
 
         }
         /// <summary>
-        /// Show the lowest common ancestro between two nodes
+        /// Muestra el ancestro comun mas cercano entre dos nodos
         /// </summary>
-        /// <param name="value1">First node</param>
-        /// <param name="value2">Second node</param>
-        /// <returns>Lowest common ancestor node</returns>
+        /// <param name="value1">Primer nodo</param>
+        /// <param name="value2">Segundo nodo</param>
+        /// <returns>Ancestro comun mas cercano</returns>
         [HttpGet]
         [Route("{value1:int}/{value2:int}")]
         public int LowestCommonAncestor(int value1, int value2)
@@ -67,7 +67,10 @@ namespace ApiTree.Controllers
 
             
         }
-
+        /// <summary>
+        /// Agrega un nuevo nodo y lo almacena en memoria cache
+        /// </summary>
+        /// <param name="value"></param>
         private void SetNode(int value)
         {
             MemoryCache mc = MemoryCache.Default;
@@ -86,13 +89,21 @@ namespace ApiTree.Controllers
             mc.Add("tree", result.ToString(), DateTimeOffset.UtcNow.AddHours(1));
             result = mc.Get("tree");
         }
-
+        /// <summary>
+        /// Retorna lo almacenado hasta el momento en memoria cache
+        /// </summary>
+        /// <returns></returns>
         private string GetTree()
         {
             MemoryCache mc = MemoryCache.Default;
             return  mc.Get("tree").ToString();
         }
-
+        /// <summary>
+        /// Evalua el arbol y por cada nodo crea un Arbol Binario y obtiene el ancestro comun
+        /// </summary>
+        /// <param name="value1"></param>
+        /// <param name="value2"></param>
+        /// <returns></returns>
         private int LCA(int value1, int value2)
         {
             string cacheTree;

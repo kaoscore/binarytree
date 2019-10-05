@@ -43,7 +43,8 @@ https://webapitree.azurewebsites.net/tree
 
 Para desarrollar el API se utilizo el lenguaje de programación C# con ASP.NET WEB API.
 
-La solución esta implementada en la nube de Azure para que se pueda probar.
+La solución esta implementada en la nube de Azure para efectos de pruebas y con el propósito de que sea escalable utilizando
+el servicio de Paas App Service https://azure.microsoft.com/es-es/services/app-service/
 
 ### Carpetas de la solución
 
