@@ -95,7 +95,7 @@ https://webapitree.azurewebsites.net/tree/83/87
 Retorna 85
 ```
 
-## Constuido con
+## Construido con
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com) - IDE de desarrollo
 * [C#](https://docs.microsoft.com/es-es/dotnet/csharp/tour-of-csharp/) - Lenguaje de programación
