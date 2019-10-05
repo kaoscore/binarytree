@@ -10,18 +10,26 @@ namespace libLogic
     public class BinaryTree
     {
         public TreeNode root;
-
+        /// <summary>
+        /// Permite agregar un nuevo nodo dentro del arbol
+        /// </summary>
+        /// <param name="data"></param>
         public void Insert(int data)
         {
-            // 1. If the tree is empty, return a new, single node 
+            
             if (root == null)
             {
                 root = new TreeNode(data);
                 return;
             }
-            // 2. Otherwise, recur down the tree 
+            
             InsertRec(root, new TreeNode(data));
         }
+        /// <summary>
+        /// Evalua de que lado de la rama del arbol debe ir el nuevo nodo de acuerdo a su valor
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="newNode"></param>
         private void InsertRec(TreeNode root, TreeNode newNode)
         {
             if (root == null)
@@ -43,7 +51,13 @@ namespace libLogic
                     InsertRec(root.right, newNode);
             }
         }
-
+        /// <summary>
+        /// Calcula el ancestro común mas cercano
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="n1"></param>
+        /// <param name="n2"></param>
+        /// <returns></returns>
         public virtual TreeNode lca(TreeNode node, int n1, int n2)
         {
             if (node == null)
@@ -51,13 +65,13 @@ namespace libLogic
                 return null;
             }
 
-            // If both n1 and n2 are smaller than root, then LCA lies in left  
+            
             if (node.data > n1 && node.data > n2)
             {
                 return lca(node.left, n1, n2);
             }
 
-            // If both n1 and n2 are greater than root, then LCA lies in right  
+            
             if (node.data < n1 && node.data < n2)
             {
                 return lca(node.right, n1, n2);
