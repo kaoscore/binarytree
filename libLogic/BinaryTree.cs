@@ -7,9 +7,42 @@ using System.Threading.Tasks;
 
 namespace libLogic
 {
-    class BinaryTree
+    public class BinaryTree
     {
         public TreeNode root;
+
+        public void Insert(int data)
+        {
+            // 1. If the tree is empty, return a new, single node 
+            if (root == null)
+            {
+                root = new TreeNode(data);
+                return;
+            }
+            // 2. Otherwise, recur down the tree 
+            InsertRec(root, new TreeNode(data));
+        }
+        private void InsertRec(TreeNode root, TreeNode newNode)
+        {
+            if (root == null)
+                root = newNode;
+
+            if (newNode.data < root.data)
+            {
+                if (root.left == null)
+                    root.left = newNode;
+                else
+                    InsertRec(root.left, newNode);
+
+            }
+            else
+            {
+                if (root.right == null)
+                    root.right = newNode;
+                else
+                    InsertRec(root.right, newNode);
+            }
+        }
 
         public virtual TreeNode lca(TreeNode node, int n1, int n2)
         {

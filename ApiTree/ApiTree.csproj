@@ -85,6 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CreateTreeController.cs" />
+    <Compile Include="Controllers\TreeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -92,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -101,8 +104,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Persitance\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libLogic\libLogic.csproj">
+      <Project>{4C742BB0-4C73-4CFA-A192-931FE837720C}</Project>
+      <Name>libLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -119,7 +128,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64831</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44315/</IISUrl>
+          <IISUrl>http://localhost:44315/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
